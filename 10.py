@@ -14,48 +14,54 @@ from math import ceil
 
 metros_quadrados = 109
 
-#CONSTANTES
+# CONSTANTES
 valor_lata = 80
 valor_galao = 25
 
-#converter para a mesma unidade de medida: mts quadrados
-metros_cobertura_lata  = 18 * 6 
-metros_cobertura_galao = 3.6 * 6 
+# converter para a mesma unidade de medida: nesse caso, mts quadrados
+metros_cobertura_lata = 18 * 6
+metros_cobertura_galao = 3.6 * 6
 
 
 # a) comprar apenas latas de 18 litros
 print("\n", "==*==" * 10, "\n")
-qtd_latas = ceil(metros_quadrados / metros_cobertura_lata) #arredondou-se pra cima, já que não se pode comprar uma fração de uma lata ou galão
+# arredondou-se pra cima, já que não se pode comprar uma fração de uma lata ou galão
+qtd_latas = ceil(metros_quadrados / metros_cobertura_lata)
 custo_latas = qtd_latas * valor_lata
 
-print("Apenas latas:")
-print("Serão necessárias {} latas ao custo de R${}".format(qtd_latas, custo_latas))
+print("a) Para pintar {} metros de área, usando apenas latas".format(metros_quadrados))
+print("serão necessárias {} latas ao custo de R${}".format(qtd_latas, custo_latas))
 
 
 # b) comprar apenas galões de 3,6 litros
 print("\n", "==*==" * 10, "\n")
-qtd_galoes = ceil(metros_quadrados / metros_cobertura_galao) 
+qtd_galoes = ceil(metros_quadrados / metros_cobertura_galao)
 custo_galoes = qtd_galoes * valor_galao
 
-print("Apenas galões")
-print("Serão necessários {} galoes ao custo de R${}".format(qtd_galoes, custo_galoes))
+print("b) Para pintar {} metros de área, usando apenas galões".format(metros_quadrados))
+
+print("Serão necessários {} galoes ao custo de R${}".format(
+    qtd_galoes, custo_galoes))
 
 
-#c. misturar latas e galões, de forma que o preço seja o menor. Acrescente 10% de folga e sempre
+
+# c. misturar latas e galões, de forma que o preço seja o menor. Acrescente 10% de folga e sempre
 print("\n", "==*==" * 10, "\n")
-metros_quadrados_disperdicio = metros_quadrados + (metros_quadrados * 0.1) #10% de folga
+metros_quadrados_disperdicio = metros_quadrados + \
+    (metros_quadrados * 0.1)  # 10% de folga
 
 qtd_latas = int(metros_quadrados_disperdicio / metros_cobertura_lata)
 metros_quadrados_restantes = metros_quadrados_disperdicio % metros_cobertura_lata
-qtd_galoes = ceil(metros_quadrados_restantes / metros_cobertura_galao) 
+qtd_galoes = ceil(metros_quadrados_restantes / metros_cobertura_galao)
 
-print("Latas e galões com acréscimo de 10%")
+print("c) Para pintar {} meetros de área usando latas e galões com acréscimo de 10%".format(metros_quadrados))
 if qtd_galoes > 3 and qtd_latas == 0:
     qtd_lata = 1
     custo_lata = valor_lata
 
     print("Será necessário {} galão ao custo de R${}".format(qtd_lata, custo_lata))
 
-else: 
+else:
     custo_mesclado = qtd_galoes * valor_galao + qtd_latas * valor_lata
-    print("Serão necessárias {} latas e {} galoes ao custo de R${}".format(qtd_latas, qtd_galoes, custo_mesclado))
+    print("Serão necessárias {} latas e {} galoes ao custo de R${}".format(
+        qtd_latas, qtd_galoes, custo_mesclado))
